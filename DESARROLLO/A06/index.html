@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Farmaps | Gestión de ofertas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="is-checking">
+
+  <div class="gate" role="status">
+    <span class="gate__spinner" aria-hidden="true"></span>
+    Verificando acceso…
+  </div>
+
+  <!-- ===== BARRA ADMINISTRATIVA ===== -->
+  <header class="adminbar">
+    <div class="adminbar__inner">
+      <a href="../A02/index.html" class="brand" aria-label="Farmaps panel administrativo">
+        <span class="brand__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20V8l4-2V4h8v2l4 2v12"/>
+            <path d="M3 20h18"/>
+            <path d="M12 9v6M9 12h6"/>
+          </svg>
+        </span>
+        <span class="brand__name">Farmaps</span>
+        <span class="brand__tag">Panel administrativo</span>
+      </a>
+
+      <nav class="tabs" aria-label="Módulos administrativos">
+        <a href="../A02/index.html" class="tabs__item">Panel general</a>
+        <a href="../A03/index.html" class="tabs__item">Farmacias</a>
+        <a href="../A04/index.html" class="tabs__item">Medicamentos</a>
+        <a href="../A05/index.html" class="tabs__item">Presentaciones</a>
+        <a href="index.html" class="tabs__item is-active" aria-current="page">Ofertas</a>
+      </nav>
+
+      <div class="adminbar__actions">
+        <a href="../index.html" class="btn-public">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <span>Volver al sitio público</span>
+        </a>
+        <button type="button" class="btn-logout" id="logoutBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <path d="m16 17 5-5-5-5"/>
+            <path d="M21 12H9"/>
+          </svg>
+          <span>Cerrar sesión</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ===== ENCABEZADO ===== -->
+    <div class="page-head">
+      <div>
+        <h1>Gestión de ofertas y disponibilidad</h1>
+        <p>Registra el precio y la disponibilidad de cada presentación en cada farmacia. Estos datos alimentan la comparación del sitio público.</p>
+      </div>
+      <button type="button" class="btn btn--primary btn--lg" id="newBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        Publicar nueva oferta
+      </button>
+    </div>
+
+    <div class="load-error" id="loadError" role="alert" hidden>
+      <p>No fue posible cargar la información de ofertas. Revisa tu conexión e inténtalo de nuevo.</p>
+      <button type="button" class="btn btn--primary btn--sm" id="retryBtn">Reintentar</button>
+    </div>
+
+    <!-- ===== INDICADORES ===== -->
+    <section class="stats" aria-label="Resumen de ofertas">
+      <article class="stat">
+        <div>
+          <h2>Ofertas disponibles</h2>
+          <p class="stat__value" id="statDisponibles">–</p>
+          <p class="stat__sub" id="statDisponiblesSub">&nbsp;</p>
+        </div>
+        <span class="stat__icon stat__icon--blue" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+        </span>
+      </article>
+      <article class="stat">
+        <div>
+          <h2>Farmacias reportando</h2>
+          <p class="stat__value" id="statFarmacias">–</p>
+          <p class="stat__sub" id="statFarmaciasSub">&nbsp;</p>
+        </div>
+        <span class="stat__icon stat__icon--green" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M12 10v6M9 13h6"/></svg>
+        </span>
+      </article>
+      <article class="stat">
+        <div>
+          <h2>Moneda operativa</h2>
+          <p class="stat__value">COP</p>
+          <p class="stat__sub">Peso colombiano</p>
+        </div>
+        <span class="stat__icon stat__icon--amber" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg>
+        </span>
+      </article>
+      <article class="stat">
+        <div>
+          <h2>Integridad de registros</h2>
+          <p class="stat__value" id="statIntegridad">–</p>
+          <p class="stat__sub" id="statIntegridadSub">&nbsp;</p>
+        </div>
+        <span class="stat__icon stat__icon--teal" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </span>
+      </article>
+    </section>
+
+    <div class="layout">
+      <!-- ===== FORMULARIO ===== -->
+      <aside class="panel form-card" id="formCard" aria-labelledby="formTitle">
+        <header class="form-card__head">
+          <span class="form-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><path d="M12 8v6M9 11h6"/></svg>
+          </span>
+          <h2 id="formTitle">Publicar nueva oferta</h2>
+          <span class="mode-chip" id="modeChip">Creación</span>
+        </header>
+
+        <form class="form" id="form" novalidate>
+          <div class="field">
+            <label for="farmaciaId">Farmacia <span class="req" aria-hidden="true">*</span></label>
+            <div class="input input--select">
+              <select id="farmaciaId" aria-describedby="farmaciaIdError" required>
+                <option value="">Selecciona una farmacia…</option>
+              </select>
+            </div>
+            <p class="field__link" id="farmaciaLink"><a href="../A03/index.html">¿No encuentras la farmacia? Regístrala en Farmacias →</a></p>
+            <p class="field__error" id="farmaciaIdError"></p>
+          </div>
+
+          <div class="field" id="medField">
+            <label for="medFiltro">Medicamento <span class="field__opt">filtro auxiliar</span></label>
+            <div class="input input--select">
+              <select id="medFiltro" aria-describedby="medFiltroNote">
+                <option value="">Mostrar todos los medicamentos</option>
+              </select>
+            </div>
+            <p class="field__note" id="medFiltroNote">Reduce la lista de presentaciones al medicamento elegido.</p>
+          </div>
+
+          <div class="field">
+            <label for="presentacionId">Presentación <span class="req" aria-hidden="true">*</span></label>
+            <div class="input input--select">
+              <select id="presentacionId" aria-describedby="presentacionIdError" required>
+                <option value="">Selecciona una presentación…</option>
+              </select>
+            </div>
+            <p class="field__link" id="presentacionLink"><a href="../A05/index.html?nuevo=1" id="presentacionLinkA">¿Falta la presentación? Regístrala en Presentaciones →</a></p>
+            <p class="field__note" id="lockNote" hidden>La farmacia y la presentación no se cambian al editar, porque forman el identificador de la oferta.</p>
+            <p class="field__error" id="presentacionIdError"></p>
+          </div>
+
+          <p class="notice notice--info" id="existeNote" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+            <span><strong>Oferta ya registrada</strong><span id="existeText"></span>
+              <button type="button" class="link-btn" id="existeBtn">Editar la oferta existente</button></span>
+          </p>
+
+          <div class="form__row">
+            <div class="field">
+              <label for="precio">Precio unitario <span class="req" aria-hidden="true">*</span></label>
+              <div class="input input--money">
+                <span class="input__prefix" aria-hidden="true">$</span>
+                <input type="text" id="precio" inputmode="numeric" maxlength="12" autocomplete="off" placeholder="0" aria-describedby="precioNote precioError" required>
+              </div>
+              <p class="field__note" id="precioNote">Valor en pesos, sin decimales.</p>
+              <p class="field__error" id="precioError"></p>
+            </div>
+            <div class="field">
+              <label for="moneda">Moneda</label>
+              <div class="input input--select">
+                <select id="moneda" disabled aria-describedby="monedaNote">
+                  <option value="COP">COP</option>
+                </select>
+              </div>
+              <p class="field__note" id="monedaNote">Única moneda admitida.</p>
+            </div>
+          </div>
+
+          <fieldset class="field segment">
+            <legend>Disponibilidad reportada <span class="req" aria-hidden="true">*</span></legend>
+            <div class="segment__options">
+              <label class="segment__item segment__item--ok">
+                <input type="radio" name="disponibilidad" value="si" checked>
+                <span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"/></svg>
+                  Disponible
+                </span>
+              </label>
+              <label class="segment__item segment__item--no">
+                <input type="radio" name="disponibilidad" value="no">
+                <span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                  No disponible
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="audit">
+            <h3>Datos de registro</h3>
+            <dl>
+              <div>
+                <dt>Fecha de actualización</dt>
+                <dd id="auditFecha">Se asigna automáticamente al guardar</dd>
+              </div>
+              <div>
+                <dt>Registrado por</dt>
+                <dd id="sessionEmail"></dd>
+              </div>
+            </dl>
+          </div>
+
+          <p class="id-line">Identificador <strong id="formId">se genera con los datos</strong></p>
+
+          <p class="alert" id="formAlert" role="alert" hidden></p>
+
+          <div class="form__actions">
+            <button type="button" class="btn btn--light" id="cancelBtn">Cancelar</button>
+            <button type="submit" class="btn btn--primary" id="saveBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>
+              <span id="saveText">Guardar oferta</span>
+            </button>
+          </div>
+        </form>
+      </aside>
+
+      <!-- ===== LISTADO ===== -->
+      <section class="panel panel--table layout__main" aria-labelledby="listTitle">
+        <header class="list-head">
+          <div class="list-head__title">
+            <h2 id="listTitle">Listado de ofertas</h2>
+            <span class="records-chip" id="recordsChip">–</span>
+          </div>
+          <button type="button" class="btn-icon" id="refreshBtn" aria-label="Actualizar listado" title="Actualizar listado">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></svg>
+          </button>
+        </header>
+
+        <div class="toolbar">
+          <label class="search">
+            <span class="sr-only">Buscar por farmacia o medicamento</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" id="search" placeholder="Buscar farmacia o medicamento…" autocomplete="off" aria-describedby="searchHint">
+          </label>
+          <div class="toolbar__right">
+            <label class="sr-only" for="farmaciaFilter">Filtrar por farmacia</label>
+            <select class="select-filter" id="farmaciaFilter">
+              <option value="">Todas las farmacias</option>
+            </select>
+          </div>
+        </div>
+        <p class="search-hint" id="searchHint" aria-live="polite" hidden></p>
+
+        <div class="active-filter" id="presFilter" hidden>
+          <span id="presFilterText"></span>
+          <button type="button" id="presFilterClear" aria-label="Quitar filtro de presentación">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Farmacia</th>
+                <th scope="col">Medicamento y presentación</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Disponibilidad</th>
+                <th scope="col">Última actualización</th>
+                <th scope="col"><span class="sr-only">Acción</span></th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+              <tr class="row-empty"><td colspan="6">Cargando ofertas…</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <footer class="table-foot">
+          <p>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            Las ofertas no se eliminan: si una farmacia deja de tener el producto, márcala como no disponible.
+          </p>
+          <div class="pager" id="pager">
+            <button type="button" id="prevPage" aria-label="Página anterior">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <span id="pageInfo" aria-live="polite">Página <strong>1</strong> de 1</span>
+            <button type="button" id="nextPage" aria-label="Página siguiente">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </footer>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

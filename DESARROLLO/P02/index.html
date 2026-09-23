@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmaps | Selección de presentación</title>
+  <meta name="description" content="Selecciona la presentación exacta del medicamento para consultar ofertas reportadas en farmacias.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="../index.html" class="brand" aria-label="Farmaps inicio">
+        <span class="brand__logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20V8l4-2V4h8v2l4 2v12"/>
+            <path d="M3 20h18"/>
+            <path d="M12 9v6M9 12h6"/>
+          </svg>
+        </span>
+        <span class="brand__name">Farmaps</span>
+      </a>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <nav class="nav" id="mainNav">
+        <a href="../index.html" class="nav__link">Buscar medicamentos</a>
+        <a href="../P03/index.html" class="nav__link">Comparador y mapa</a>
+        <a href="../P04/index.html" class="nav__link" data-contexto>Referencia geográfica</a>
+      </nav>
+
+      <div class="navbar__actions">
+        <a href="../A01/index.html" class="admin-link">Acceso administración</a>
+        <a href="../A01/index.html" class="user-btn" aria-label="Acceso administración">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M5 21a7 7 0 0 1 14 0"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== BARRA DE BÚSQUEDA + PUNTO DE REFERENCIA ===== -->
+  <section class="toolbar">
+    <div class="container toolbar__inner">
+      <form class="searchbar" id="searchForm" role="search" autocomplete="off" novalidate>
+        <svg class="searchbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m20 20-3.5-3.5"/>
+        </svg>
+        <label for="searchInput" class="sr-only">Nombre comercial o principio activo</label>
+        <input type="search" id="searchInput" name="q" class="searchbar__input"
+               placeholder="Nombre comercial o principio activo">
+        <button type="button" class="searchbar__clear" id="clearBtn" aria-label="Borrar búsqueda" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+        <button type="submit" class="btn btn--primary btn--sm">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/>
+            <circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/>
+          </svg>
+          Modificar
+        </button>
+      </form>
+
+      <div class="reference">
+        <svg class="reference__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <div class="reference__text">
+          <strong>Punto de referencia:</strong>
+          <span id="referenceLabel">Sin definir</span>
+        </div>
+        <a href="../P04/index.html" class="reference__link" id="referenceLink" data-contexto>Definir</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- Navegación de fase -->
+    <div class="stepbar">
+      <a href="../index.html" class="back-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Volver al inicio
+      </a>
+      <p class="phase">Fase 2 de 4 <span class="phase__dot">•</span> <span class="phase__name">Selección Farmacológica</span></p>
+    </div>
+
+    <!-- Encabezado de resultados -->
+    <section class="results-head">
+      <p class="eyebrow">
+        <span class="eyebrow__main">Catálogo terapéutico</span>
+        <span class="eyebrow__dot">•</span>
+        <span class="eyebrow__detail" id="criterio">Criterio: nombre comercial o principio activo</span>
+      </p>
+
+      <div class="results-head__row">
+        <div>
+          <h1 class="results-title" id="resultsTitle">Resultados de búsqueda</h1>
+          <p class="results-subtitle">
+            Selecciona una presentación específica para ver ofertas disponibles. Recuerda que no se consideran
+            equivalentes terapéuticos medicamentos solo por compartir principio activo.
+          </p>
+        </div>
+
+        <div class="count-box" id="countBox" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="2"/>
+            <path d="M7 9h6M7 13h4M7 17h3"/>
+            <path d="m14 15 2 2 3-4"/>
+          </svg>
+          <div>
+            <strong id="countValue">0 Presentaciones</strong>
+            <span>Registradas en el catálogo Farmaps</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aviso -->
+    <aside class="warning" role="note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/>
+        <path d="M12 9v4M12 17h.01"/>
+      </svg>
+      <div>
+        <h2 class="warning__title">Aviso sobre intercambiabilidad y bioequivalencia</h2>
+        <p>La dosis (500 mg vs. 1 g), la formulación galénica (gotas, comprimidos, efervescentes) y el público destinatario (pediátrico vs. adulto) determinan la biodisponibilidad y seguridad. Consulta siempre la receta médica antes de cambiar de presentación farmacéutica.</p>
+      </div>
+    </aside>
+
+    <!-- Resultados (generados por script.js) -->
+    <section class="grid" id="results" aria-live="polite" aria-busy="true"></section>
+
+    <!-- Validación telefónica -->
+    <aside class="callout">
+      <span class="callout__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/>
+        </svg>
+      </span>
+      <div class="callout__body">
+        <h2>Validación de stock telefónica recomendada</h2>
+        <p>Antes de desplazarte a la droguería de turno o dispensario institucional de tu EPS en Bogotá, te sugerimos contactar vía telefónica para confirmar existencias en tiempo real y fórmula médica.</p>
+      </div>
+      <a href="../index.html" class="btn btn--outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        Probar otro medicamento
+      </a>
+    </aside>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

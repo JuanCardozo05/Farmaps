@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmaps | Comparador y mapa</title>
+  <meta name="description" content="Compara precios reportados de una misma presentación y consulta la distancia aproximada a cada farmacia en Bogotá.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="../index.html" class="brand" aria-label="Farmaps inicio">
+        <span class="brand__logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20V8l4-2V4h8v2l4 2v12"/>
+            <path d="M3 20h18"/>
+            <path d="M12 9v6M9 12h6"/>
+          </svg>
+        </span>
+        <span class="brand__name">Farmaps</span>
+      </a>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <nav class="nav" id="mainNav">
+        <a href="../index.html" class="nav__link">Buscar medicamentos</a>
+        <a href="index.html" class="nav__link nav__link--active" aria-current="page">Comparador y mapa</a>
+        <a href="../P04/index.html" class="nav__link" data-referencia>Referencia geográfica</a>
+      </nav>
+
+      <div class="navbar__actions">
+        <a href="../A01/index.html" class="admin-link">Acceso administración</a>
+        <a href="../A01/index.html" class="user-btn" aria-label="Acceso administración">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M5 21a7 7 0 0 1 14 0"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== PRESENTACIÓN + ORDEN + REFERENCIA ===== -->
+  <section class="toolbar">
+    <div class="container toolbar__inner">
+      <div class="toolbar__left">
+        <div class="selected">
+          <svg class="selected__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="7" width="16" height="14" rx="2"/>
+            <path d="M8 7V4h8v3M12 11v6M9 14h6"/>
+          </svg>
+          <div>
+            <span class="selected__label">Presentación seleccionada</span>
+            <strong class="selected__name" id="presentationName">Cargando…</strong>
+          </div>
+        </div>
+        <a href="../P02/index.html" class="change-link" id="changePresentation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 16H3m0 0 3-3m-3 3 3 3M17 8h4m0 0-3-3m3 3-3 3M3 16h11M21 8H10"/></svg>
+          Cambiar presentación
+        </a>
+      </div>
+
+      <div class="toolbar__right">
+        <div class="sort" role="group" aria-label="Ordenar resultados">
+          <button type="button" class="sort__btn is-active" id="sortPrice" data-orden="precio" aria-pressed="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 17-8.5-8.5-5 5L2 7"/><path d="M16 17h6v-6"/></svg>
+            Menor precio
+          </button>
+          <button type="button" class="sort__btn" id="sortDistance" data-orden="distancia" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 11 19-9-9 19-2-8-8-2z"/></svg>
+            Más cerca
+          </button>
+        </div>
+
+        <div class="reference">
+          <span class="reference__dot" id="referenceDot" aria-hidden="true"></span>
+          <div class="reference__text">
+            <span class="reference__label">Ubicación de referencia</span>
+            <span class="reference__value">
+              <strong id="referenceLabel">Sin definir</strong>
+              <small id="referenceState"></small>
+            </span>
+          </div>
+          <a href="../P04/index.html" class="reference__link" id="referenceLink" data-referencia>[Definir]</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container layout">
+    <!-- Lista de ofertas -->
+    <section class="results" aria-labelledby="resultsTitle">
+      <div class="results__head">
+        <h1 class="results__title" id="resultsTitle">Farmacias con coincidencias</h1>
+        <label class="currency" id="currencyBox" hidden>
+          Moneda
+          <select id="currencySelect"></select>
+        </label>
+      </div>
+
+      <p class="notice" id="notice" role="status" hidden></p>
+
+      <div class="list" id="list" aria-live="polite" aria-busy="true"></div>
+
+      <details class="others" id="others" hidden>
+        <summary id="othersSummary">Farmacias sin disponibilidad reportada</summary>
+        <p class="others__hint">Estas farmacias registran la presentación, pero no reportan disponibilidad. No se incluyen en la comparación ni en el mapa.</p>
+        <ul class="others__list" id="othersList"></ul>
+      </details>
+
+      <aside class="disclaimer" role="note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+        </svg>
+        <p><strong>Confirma antes de desplazarte.</strong> Los precios y la disponibilidad pueden cambiar sin previo aviso; confirma directamente con la farmacia. Solo se comparan ofertas de la misma presentación y moneda.</p>
+      </aside>
+    </section>
+
+    <!-- Mapa -->
+    <section class="map-card" id="mapCard" aria-label="Mapa de farmacias">
+      <div id="map" class="map"></div>
+      <span class="map-chip" id="mapChip" hidden></span>
+      <p class="map-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        Distancias en línea recta sin cálculo de ruta vial ni tiempos estimados.
+      </p>
+      <div class="map-error" id="mapError" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>
+        <strong>El mapa no está disponible en este momento</strong>
+        <span>Puedes seguir consultando y comparando las ofertas en la lista.</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

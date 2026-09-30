@@ -1,0 +1,545 @@
+REGISTRO DE PRUEBAS AUTOMATIZADAS - FARMAPS
+Sitio probado: https://farmaps-b3a0c.web.app (Firebase Hosting, HTTPS)
+Herramienta: Playwright para Python 3.13 (navegadores sin interfaz)
+Equipo: Intel Core i3-8145U 2,10 GHz, 15,8 GB RAM, Windows 11 Enterprise, Wi-Fi 270 Mbps
+Excepci?n: la ejecuci?n 02 se hizo contra un servidor local con la correcci?n de INC-01, antes de publicarla.
+
+====================================================================================================
+Ejecuci?n: 01_edge_antes_correccion_2026-09-24_1038.json   Fecha: 2026-09-24 10:38
+  Navegador edge: versi?n 153.0.4234.48
+  Resultado: 28 de 30 aprobados
+----------------------------------------------------------------------------------------------------
+  [APROBADO] edge     CP-01    Autocompletado por nombre comercial («losa»)
+             Detalle: ['Losartán']
+  [APROBADO] edge     CP-02    Búsqueda por principio activo sin tilde («acetaminofen»)
+             Detalle: ['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']
+  [APROBADO] edge     CP-03    Mensaje cuando no hay coincidencias
+             Detalle: No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru
+  [APROBADO] edge     CP-04    Validación de búsqueda con menos de 3 caracteres
+             Detalle: Escribe al menos 3 caracteres para buscar un medicamento.
+  [APROBADO] edge     CP-05    Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)
+             Detalle: 2 presentaciones
+  [APROBADO] edge     CP-06    Comparación por precio: misma presentación y moneda, lista = marcadores
+             Detalle: 19 ofertas, 19 marcadores, orden ascendente=True
+  [APROBADO] edge     CP-07    Atribución del mapa y aviso de confirmación con la farmacia
+             Detalle: © OpenStreetMap contributors
+  [APROBADO] edge     CP-08    Presentación sin ofertas muestra estado vacío
+             Detalle: No hay ofertas registradas
+  [APROBADO] edge     CP-09    Ubicación del visitante con permiso concedido (P04)
+             Detalle: Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C.
+  [APROBADO] edge     CP-10    Orden por cercanía identifica la farmacia más cercana (Haversine)
+             Detalle: 1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)
+  [APROBADO] edge     CP-11    Las coordenadas no se envían a servidores ni quedan en localStorage
+             Detalle: solicitudes con coordenadas: 0, localStorage: []
+  [APROBADO] edge     CP-12    Detalle de la oferta con farmacia, dirección, horario, precio y fecha
+             Detalle: Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)
+  [APROBADO] edge     CP-13    Permiso denegado: mensaje y selección manual del punto
+             Detalle: Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C.
+  [APROBADO] edge     CP-14    Farmacia sin horario muestra «Horario no registrado»
+             Detalle: Horario no registrado
+  [APROBADO] edge     CP-15    Texto con HTML en la búsqueda no se ejecuta (inyección)
+             Detalle: sin ejecución de código
+  [APROBADO] edge     CP-16    Si falla el mapa se conserva el listado
+             Detalle: 19 ofertas con el mapa caído
+  [FALLA   ] edge     CP-17    Falla de la base de datos muestra error, no «sin resultados»
+             Detalle: No encontramos esta presentación
+  [APROBADO] edge     RS-360   Sin desbordamiento horizontal a 360×800 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] edge     RS-1366  Sin desbordamiento horizontal a 1366×768 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] edge     AD-01    Pantalla administrativa sin sesión redirige al acceso
+             Detalle: /A01/index.html?volver=A03
+  [APROBADO] edge     AD-02    Credenciales incorrectas muestran un mensaje general
+             Detalle: Correo o contraseña incorrectos.
+  [APROBADO] edge     AD-03    Inicio de sesión válido y retorno a la pantalla solicitada
+             Detalle: 1 farmacias en A03
+  [APROBADO] edge     AD-04    Formulario de farmacia vacío muestra mensajes de corrección
+             Detalle: Escribe el nombre de la farmacia. | Escribe la dirección de la farmacia. | Escribe la latitud. | Escribe la longitud.
+  [APROBADO] edge     AD-05    Latitud fuera de rango se rechaza antes de guardar
+             Detalle: Debe estar entre 4,45 y 4,84 (Bogotá D.C.).
+  [APROBADO] edge     AD-06    Navegación autenticada por A02, A04, A05 y A06
+             Detalle: A02 A04 A05 A06
+  [APROBADO] edge     AD-07    Oferta con precio 0 se rechaza con mensaje
+             Detalle: El precio debe ser mayor que cero.
+  [FALLA   ] edge     AD-08    Cierre de sesión bloquea de nuevo el panel
+             Detalle: Excepción: TimeoutError: Timeout 15000ms exceeded.
+  [APROBADO] edge     AD-09    Una ventana nueva no hereda la sesión administrativa
+             Detalle: sesión de pestaña (browserSessionPersistence)
+  [APROBADO] edge     RN-01    Listado y marcadores en ≤ 3 s en 10 búsquedas consecutivas
+             Detalle: 10/10; tiempos ms: [2046, 1064, 1123, 1246, 1087, 1252, 1111, 1379, 1191, 987]
+  [APROBADO] edge     RN-02    Sugerencias del buscador (P01)
+             Detalle: ms: [77, 62, 57, 42, 54]
+
+====================================================================================================
+Ejecuci?n: 02_edge_correccion_servidor_local_2026-09-24_1043.json   Fecha: 2026-09-24 10:43
+  Navegador edge: versi?n 153.0.4234.48
+  Resultado: 30 de 30 aprobados
+----------------------------------------------------------------------------------------------------
+  [APROBADO] edge     CP-01    Autocompletado por nombre comercial («losa»)
+             Detalle: ['Losartán']
+  [APROBADO] edge     CP-02    Búsqueda por principio activo sin tilde («acetaminofen»)
+             Detalle: ['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']
+  [APROBADO] edge     CP-03    Mensaje cuando no hay coincidencias
+             Detalle: No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru
+  [APROBADO] edge     CP-04    Validación de búsqueda con menos de 3 caracteres
+             Detalle: Escribe al menos 3 caracteres para buscar un medicamento.
+  [APROBADO] edge     CP-05    Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)
+             Detalle: 2 presentaciones
+  [APROBADO] edge     CP-06    Comparación por precio: misma presentación y moneda, lista = marcadores
+             Detalle: 19 ofertas, 19 marcadores, orden ascendente=True
+  [APROBADO] edge     CP-07    Atribución del mapa y aviso de confirmación con la farmacia
+             Detalle: © OpenStreetMap contributors
+  [APROBADO] edge     CP-08    Presentación sin ofertas muestra estado vacío
+             Detalle: No hay ofertas registradas
+  [APROBADO] edge     CP-09    Ubicación del visitante con permiso concedido (P04)
+             Detalle: Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C.
+  [APROBADO] edge     CP-10    Orden por cercanía identifica la farmacia más cercana (Haversine)
+             Detalle: 1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)
+  [APROBADO] edge     CP-11    Las coordenadas no se envían a servidores ni quedan en localStorage
+             Detalle: solicitudes con coordenadas: 0, localStorage: []
+  [APROBADO] edge     CP-12    Detalle de la oferta con farmacia, dirección, horario, precio y fecha
+             Detalle: Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)
+  [APROBADO] edge     CP-13    Permiso denegado: mensaje y selección manual del punto
+             Detalle: Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C.
+  [APROBADO] edge     CP-14    Farmacia sin horario muestra «Horario no registrado»
+             Detalle: Horario no registrado
+  [APROBADO] edge     CP-15    Texto con HTML en la búsqueda no se ejecuta (inyección)
+             Detalle: sin ejecución de código
+  [APROBADO] edge     CP-16    Si falla el mapa se conserva el listado
+             Detalle: 19 ofertas con el mapa caído
+  [APROBADO] edge     CP-17    Falla de la base de datos muestra error, no «sin resultados»
+             Detalle: No fue posible cargar las ofertas
+  [APROBADO] edge     RS-360   Sin desbordamiento horizontal a 360×800 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] edge     RS-1366  Sin desbordamiento horizontal a 1366×768 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] edge     AD-01    Pantalla administrativa sin sesión redirige al acceso
+             Detalle: /A01/index.html?volver=A03
+  [APROBADO] edge     AD-02    Credenciales incorrectas muestran un mensaje general
+             Detalle: Correo o contraseña incorrectos.
+  [APROBADO] edge     AD-03    Inicio de sesión válido y retorno a la pantalla solicitada
+             Detalle: 28 farmacias en A03
+  [APROBADO] edge     AD-04    Formulario de farmacia vacío muestra mensajes de corrección
+             Detalle: Escribe el nombre de la farmacia. | Escribe la dirección de la farmacia. | Escribe la latitud. | Escribe la longitud.
+  [APROBADO] edge     AD-05    Latitud fuera de rango se rechaza antes de guardar
+             Detalle: Debe estar entre 4,45 y 4,84 (Bogotá D.C.).
+  [APROBADO] edge     AD-06    Navegación autenticada por A02, A04, A05 y A06
+             Detalle: A02 A04 A05 A06
+  [APROBADO] edge     AD-07    Oferta con precio 0 se rechaza con mensaje
+             Detalle: El precio debe ser mayor que cero.
+  [APROBADO] edge     AD-08    Cierre de sesión con cambios sin guardar pide confirmación y bloquea el panel
+             Detalle: confirmación: «Tienes cambios sin guardar. ¿Cerrar sesión de todos modos?»; acceso bloqueado tras salir
+  [APROBADO] edge     AD-09    Una ventana nueva no hereda la sesión administrativa
+             Detalle: sesión de pestaña (browserSessionPersistence)
+  [APROBADO] edge     RN-01    Listado y marcadores en ≤ 3 s en 10 búsquedas consecutivas
+             Detalle: 10/10; tiempos ms: [1941, 1155, 1064, 1148, 828, 1505, 1277, 1414, 909, 1092]
+  [APROBADO] edge     RN-02    Sugerencias del buscador (P01)
+             Detalle: ms: [168, 180, 131, 104, 215]
+
+====================================================================================================
+Ejecuci?n: 03_cuatro_navegadores_sitio_publicado_2026-09-24_1104.json   Fecha: 2026-09-24 11:04
+  Navegador edge: versi?n 153.0.4234.48
+  Navegador chrome: versi?n 153.0.8010.53
+  Navegador firefox: versi?n 155.0
+  Navegador webkit: versi?n 26.6
+  Resultado: 83 de 87 aprobados
+----------------------------------------------------------------------------------------------------
+  [APROBADO] edge     CP-01    Autocompletado por nombre comercial («losa»)
+             Detalle: ['Losartán']
+  [APROBADO] edge     CP-02    Búsqueda por principio activo sin tilde («acetaminofen»)
+             Detalle: ['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']
+  [APROBADO] edge     CP-03    Mensaje cuando no hay coincidencias
+             Detalle: No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru
+  [APROBADO] edge     CP-04    Validación de búsqueda con menos de 3 caracteres
+             Detalle: Escribe al menos 3 caracteres para buscar un medicamento.
+  [APROBADO] edge     CP-05    Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)
+             Detalle: 2 presentaciones
+  [APROBADO] edge     CP-06    Comparación por precio: misma presentación y moneda, lista = marcadores
+             Detalle: 19 ofertas, 19 marcadores, orden ascendente=True
+  [APROBADO] edge     CP-07    Atribución del mapa y aviso de confirmación con la farmacia
+             Detalle: © OpenStreetMap contributors
+  [APROBADO] edge     CP-08    Presentación sin ofertas muestra estado vacío
+             Detalle: No hay ofertas registradas
+  [APROBADO] edge     CP-09    Ubicación del visitante con permiso concedido (P04)
+             Detalle: Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C.
+  [APROBADO] edge     CP-10    Orden por cercanía identifica la farmacia más cercana (Haversine)
+             Detalle: 1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)
+  [APROBADO] edge     CP-11    Las coordenadas no se envían a servidores ni quedan en localStorage
+             Detalle: solicitudes con coordenadas: 0, localStorage: []
+  [APROBADO] edge     CP-12    Detalle de la oferta con farmacia, dirección, horario, precio y fecha
+             Detalle: Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)
+  [APROBADO] edge     CP-13    Permiso denegado: mensaje y selección manual del punto
+             Detalle: Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C.
+  [APROBADO] edge     CP-14    Farmacia sin horario muestra «Horario no registrado»
+             Detalle: Horario no registrado
+  [APROBADO] edge     CP-15    Texto con HTML en la búsqueda no se ejecuta (inyección)
+             Detalle: sin ejecución de código
+  [APROBADO] edge     CP-16    Si falla el mapa se conserva el listado
+             Detalle: 19 ofertas con el mapa caído
+  [APROBADO] edge     CP-17    Falla de la base de datos muestra error, no «sin resultados»
+             Detalle: No fue posible cargar las ofertas
+  [APROBADO] edge     RS-360   Sin desbordamiento horizontal a 360×800 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] edge     RS-1366  Sin desbordamiento horizontal a 1366×768 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] edge     AD-01    Pantalla administrativa sin sesión redirige al acceso
+             Detalle: /A01/index.html?volver=A03
+  [APROBADO] edge     AD-02    Credenciales incorrectas muestran un mensaje general
+             Detalle: Correo o contraseña incorrectos.
+  [APROBADO] edge     AD-03    Inicio de sesión válido y retorno a la pantalla solicitada
+             Detalle: 28 farmacias en A03
+  [APROBADO] edge     AD-04    Formulario de farmacia vacío muestra mensajes de corrección
+             Detalle: Escribe el nombre de la farmacia. | Escribe la dirección de la farmacia. | Escribe la latitud. | Escribe la longitud.
+  [APROBADO] edge     AD-05    Latitud fuera de rango se rechaza antes de guardar
+             Detalle: Debe estar entre 4,45 y 4,84 (Bogotá D.C.).
+  [APROBADO] edge     AD-06    Navegación autenticada por A02, A04, A05 y A06
+             Detalle: A02 A04 A05 A06
+  [APROBADO] edge     AD-07    Oferta con precio 0 se rechaza con mensaje
+             Detalle: El precio debe ser mayor que cero.
+  [APROBADO] edge     AD-08    Cierre de sesión con cambios sin guardar pide confirmación y bloquea el panel
+             Detalle: confirmación: «Tienes cambios sin guardar. ¿Cerrar sesión de todos modos?»; acceso bloqueado tras salir
+  [APROBADO] edge     AD-09    Una ventana nueva no hereda la sesión administrativa
+             Detalle: sesión de pestaña (browserSessionPersistence)
+  [APROBADO] edge     RN-01    Listado y marcadores en ≤ 3 s en 10 búsquedas consecutivas
+             Detalle: 10/10; tiempos ms: [1990, 1023, 1242, 1132, 976, 2023, 1020, 1013, 967, 1182]
+  [APROBADO] edge     RN-02    Sugerencias del buscador (P01)
+             Detalle: ms: [42, 44, 47, 72, 161]
+  [APROBADO] chrome   CP-01    Autocompletado por nombre comercial («losa»)
+             Detalle: ['Losartán']
+  [APROBADO] chrome   CP-02    Búsqueda por principio activo sin tilde («acetaminofen»)
+             Detalle: ['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']
+  [APROBADO] chrome   CP-03    Mensaje cuando no hay coincidencias
+             Detalle: No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru
+  [APROBADO] chrome   CP-04    Validación de búsqueda con menos de 3 caracteres
+             Detalle: Escribe al menos 3 caracteres para buscar un medicamento.
+  [APROBADO] chrome   CP-05    Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)
+             Detalle: 2 presentaciones
+  [APROBADO] chrome   CP-06    Comparación por precio: misma presentación y moneda, lista = marcadores
+             Detalle: 19 ofertas, 19 marcadores, orden ascendente=True
+  [APROBADO] chrome   CP-07    Atribución del mapa y aviso de confirmación con la farmacia
+             Detalle: © OpenStreetMap contributors
+  [APROBADO] chrome   CP-08    Presentación sin ofertas muestra estado vacío
+             Detalle: No hay ofertas registradas
+  [APROBADO] chrome   CP-09    Ubicación del visitante con permiso concedido (P04)
+             Detalle: Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C.
+  [APROBADO] chrome   CP-10    Orden por cercanía identifica la farmacia más cercana (Haversine)
+             Detalle: 1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)
+  [APROBADO] chrome   CP-11    Las coordenadas no se envían a servidores ni quedan en localStorage
+             Detalle: solicitudes con coordenadas: 0, localStorage: []
+  [APROBADO] chrome   CP-12    Detalle de la oferta con farmacia, dirección, horario, precio y fecha
+             Detalle: Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)
+  [APROBADO] chrome   CP-13    Permiso denegado: mensaje y selección manual del punto
+             Detalle: Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C.
+  [APROBADO] chrome   CP-14    Farmacia sin horario muestra «Horario no registrado»
+             Detalle: Horario no registrado
+  [APROBADO] chrome   CP-15    Texto con HTML en la búsqueda no se ejecuta (inyección)
+             Detalle: sin ejecución de código
+  [APROBADO] chrome   CP-16    Si falla el mapa se conserva el listado
+             Detalle: 19 ofertas con el mapa caído
+  [APROBADO] chrome   CP-17    Falla de la base de datos muestra error, no «sin resultados»
+             Detalle: No fue posible cargar las ofertas
+  [APROBADO] chrome   RS-360   Sin desbordamiento horizontal a 360×800 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] chrome   RS-1366  Sin desbordamiento horizontal a 1366×768 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] firefox  CP-01    Autocompletado por nombre comercial («losa»)
+             Detalle: ['Losartán']
+  [APROBADO] firefox  CP-02    Búsqueda por principio activo sin tilde («acetaminofen»)
+             Detalle: ['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']
+  [APROBADO] firefox  CP-03    Mensaje cuando no hay coincidencias
+             Detalle: No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru
+  [APROBADO] firefox  CP-04    Validación de búsqueda con menos de 3 caracteres
+             Detalle: Escribe al menos 3 caracteres para buscar un medicamento.
+  [FALLA   ] firefox  CP-05    Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)
+             Detalle: Excepción: TimeoutError: Page.press: Timeout 30000ms exceeded.
+  [FALLA   ] firefox  CP-06    Comparación por precio: misma presentación y moneda, lista = marcadores
+             Detalle: Excepción: TimeoutError: Page.goto: Timeout 30000ms exceeded.
+  [FALLA   ] firefox  CP-07    Atribución del mapa y aviso de confirmación con la farmacia
+             Detalle: Excepción: TimeoutError: Page.inner_text: Timeout 30000ms exceeded.
+  [FALLA   ] firefox  CP-08    Presentación sin ofertas muestra estado vacío
+             Detalle: Excepción: TimeoutError: Page.goto: Timeout 30000ms exceeded.
+  [APROBADO] firefox  CP-09    Ubicación del visitante con permiso concedido (P04)
+             Detalle: Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C.
+  [APROBADO] firefox  CP-10    Orden por cercanía identifica la farmacia más cercana (Haversine)
+             Detalle: 1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)
+  [APROBADO] firefox  CP-11    Las coordenadas no se envían a servidores ni quedan en localStorage
+             Detalle: solicitudes con coordenadas: 0, localStorage: []
+  [APROBADO] firefox  CP-12    Detalle de la oferta con farmacia, dirección, horario, precio y fecha
+             Detalle: Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)
+  [APROBADO] firefox  CP-13    Permiso denegado: mensaje y selección manual del punto
+             Detalle: Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C.
+  [APROBADO] firefox  CP-14    Farmacia sin horario muestra «Horario no registrado»
+             Detalle: Horario no registrado
+  [APROBADO] firefox  CP-15    Texto con HTML en la búsqueda no se ejecuta (inyección)
+             Detalle: sin ejecución de código
+  [APROBADO] firefox  CP-16    Si falla el mapa se conserva el listado
+             Detalle: 19 ofertas con el mapa caído
+  [APROBADO] firefox  CP-17    Falla de la base de datos muestra error, no «sin resultados»
+             Detalle: No fue posible cargar las ofertas
+  [APROBADO] firefox  RS-360   Sin desbordamiento horizontal a 360×800 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] firefox  RS-1366  Sin desbordamiento horizontal a 1366×768 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] webkit   CP-01    Autocompletado por nombre comercial («losa»)
+             Detalle: ['Losartán']
+  [APROBADO] webkit   CP-02    Búsqueda por principio activo sin tilde («acetaminofen»)
+             Detalle: ['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']
+  [APROBADO] webkit   CP-03    Mensaje cuando no hay coincidencias
+             Detalle: No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru
+  [APROBADO] webkit   CP-04    Validación de búsqueda con menos de 3 caracteres
+             Detalle: Escribe al menos 3 caracteres para buscar un medicamento.
+  [APROBADO] webkit   CP-05    Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)
+             Detalle: 2 presentaciones
+  [APROBADO] webkit   CP-06    Comparación por precio: misma presentación y moneda, lista = marcadores
+             Detalle: 19 ofertas, 19 marcadores, orden ascendente=True
+  [APROBADO] webkit   CP-07    Atribución del mapa y aviso de confirmación con la farmacia
+             Detalle: © OpenStreetMap contributors
+  [APROBADO] webkit   CP-08    Presentación sin ofertas muestra estado vacío
+             Detalle: No hay ofertas registradas
+  [APROBADO] webkit   CP-09    Ubicación del visitante con permiso concedido (P04)
+             Detalle: Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C.
+  [APROBADO] webkit   CP-10    Orden por cercanía identifica la farmacia más cercana (Haversine)
+             Detalle: 1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)
+  [APROBADO] webkit   CP-11    Las coordenadas no se envían a servidores ni quedan en localStorage
+             Detalle: solicitudes con coordenadas: 0, localStorage: []
+  [APROBADO] webkit   CP-12    Detalle de la oferta con farmacia, dirección, horario, precio y fecha
+             Detalle: Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)
+  [APROBADO] webkit   CP-13    Permiso denegado: mensaje y selección manual del punto
+             Detalle: Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C.
+  [APROBADO] webkit   CP-14    Farmacia sin horario muestra «Horario no registrado»
+             Detalle: Horario no registrado
+  [APROBADO] webkit   CP-15    Texto con HTML en la búsqueda no se ejecuta (inyección)
+             Detalle: sin ejecución de código
+  [APROBADO] webkit   CP-16    Si falla el mapa se conserva el listado
+             Detalle: 19 ofertas con el mapa caído
+  [APROBADO] webkit   CP-17    Falla de la base de datos muestra error, no «sin resultados»
+             Detalle: No fue posible cargar las ofertas
+  [APROBADO] webkit   RS-360   Sin desbordamiento horizontal a 360×800 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] webkit   RS-1366  Sin desbordamiento horizontal a 1366×768 en 7 pantallas
+             Detalle: 7/7 correctas
+
+====================================================================================================
+Ejecuci?n: 04_firefox_2026-09-24_1115.json   Fecha: 2026-09-24 11:15
+  Navegador firefox: versi?n 155.0
+  Resultado: 19 de 19 aprobados
+----------------------------------------------------------------------------------------------------
+  [APROBADO] firefox  CP-01    Autocompletado por nombre comercial («losa»)
+             Detalle: ['Losartán']
+  [APROBADO] firefox  CP-02    Búsqueda por principio activo sin tilde («acetaminofen»)
+             Detalle: ['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']
+  [APROBADO] firefox  CP-03    Mensaje cuando no hay coincidencias
+             Detalle: No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru
+  [APROBADO] firefox  CP-04    Validación de búsqueda con menos de 3 caracteres
+             Detalle: Escribe al menos 3 caracteres para buscar un medicamento.
+  [APROBADO] firefox  CP-05    Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)
+             Detalle: 2 presentaciones en 6.4 s
+  [APROBADO] firefox  CP-06    Comparación por precio: misma presentación y moneda, lista = marcadores
+             Detalle: 19 ofertas, 19 marcadores, orden ascendente=True
+  [APROBADO] firefox  CP-07    Atribución del mapa y aviso de confirmación con la farmacia
+             Detalle: © OpenStreetMap contributors
+  [APROBADO] firefox  CP-08    Presentación sin ofertas muestra estado vacío
+             Detalle: No hay ofertas registradas
+  [APROBADO] firefox  CP-09    Ubicación del visitante con permiso concedido (P04)
+             Detalle: Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C.
+  [APROBADO] firefox  CP-10    Orden por cercanía identifica la farmacia más cercana (Haversine)
+             Detalle: 1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)
+  [APROBADO] firefox  CP-11    Las coordenadas no se envían a servidores ni quedan en localStorage
+             Detalle: solicitudes con coordenadas: 0, localStorage: []
+  [APROBADO] firefox  CP-12    Detalle de la oferta con farmacia, dirección, horario, precio y fecha
+             Detalle: Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)
+  [APROBADO] firefox  CP-13    Permiso denegado: mensaje y selección manual del punto
+             Detalle: Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C.
+  [APROBADO] firefox  CP-14    Farmacia sin horario muestra «Horario no registrado»
+             Detalle: Horario no registrado
+  [APROBADO] firefox  CP-15    Texto con HTML en la búsqueda no se ejecuta (inyección)
+             Detalle: sin ejecución de código
+  [APROBADO] firefox  CP-16    Si falla el mapa se conserva el listado
+             Detalle: 19 ofertas con el mapa caído
+  [APROBADO] firefox  CP-17    Falla de la base de datos muestra error, no «sin resultados»
+             Detalle: No fue posible cargar las ofertas
+  [APROBADO] firefox  RS-360   Sin desbordamiento horizontal a 360×800 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] firefox  RS-1366  Sin desbordamiento horizontal a 1366×768 en 7 pantallas
+             Detalle: 7/7 correctas
+
+====================================================================================================
+Ejecuci?n: 05_chrome_firefox_webkit_2026-09-24_1123.json   Fecha: 2026-09-24 11:23
+  Navegador chrome: versi?n 153.0.8010.53
+  Navegador firefox: versi?n 155.0
+  Navegador webkit: versi?n 26.6
+  Resultado: 54 de 57 aprobados
+----------------------------------------------------------------------------------------------------
+  [APROBADO] chrome   CP-01    Autocompletado por nombre comercial («losa»)
+             Detalle: ['Losartán']
+  [APROBADO] chrome   CP-02    Búsqueda por principio activo sin tilde («acetaminofen»)
+             Detalle: ['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']
+  [APROBADO] chrome   CP-03    Mensaje cuando no hay coincidencias
+             Detalle: No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru
+  [APROBADO] chrome   CP-04    Validación de búsqueda con menos de 3 caracteres
+             Detalle: Escribe al menos 3 caracteres para buscar un medicamento.
+  [APROBADO] chrome   CP-05    Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)
+             Detalle: 2 presentaciones en 2.1 s
+  [APROBADO] chrome   CP-06    Comparación por precio: misma presentación y moneda, lista = marcadores
+             Detalle: 19 ofertas, 19 marcadores, orden ascendente=True
+  [APROBADO] chrome   CP-07    Atribución del mapa y aviso de confirmación con la farmacia
+             Detalle: © OpenStreetMap contributors
+  [APROBADO] chrome   CP-08    Presentación sin ofertas muestra estado vacío
+             Detalle: No hay ofertas registradas
+  [APROBADO] chrome   CP-09    Ubicación del visitante con permiso concedido (P04)
+             Detalle: Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C.
+  [APROBADO] chrome   CP-10    Orden por cercanía identifica la farmacia más cercana (Haversine)
+             Detalle: 1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)
+  [APROBADO] chrome   CP-11    Las coordenadas no se envían a servidores ni quedan en localStorage
+             Detalle: solicitudes con coordenadas: 0, localStorage: []
+  [APROBADO] chrome   CP-12    Detalle de la oferta con farmacia, dirección, horario, precio y fecha
+             Detalle: Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)
+  [APROBADO] chrome   CP-13    Permiso denegado: mensaje y selección manual del punto
+             Detalle: Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C.
+  [APROBADO] chrome   CP-14    Farmacia sin horario muestra «Horario no registrado»
+             Detalle: Horario no registrado
+  [APROBADO] chrome   CP-15    Texto con HTML en la búsqueda no se ejecuta (inyección)
+             Detalle: sin ejecución de código
+  [APROBADO] chrome   CP-16    Si falla el mapa se conserva el listado
+             Detalle: 19 ofertas con el mapa caído
+  [APROBADO] chrome   CP-17    Falla de la base de datos muestra error, no «sin resultados»
+             Detalle: No fue posible cargar las ofertas
+  [APROBADO] chrome   RS-360   Sin desbordamiento horizontal a 360×800 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] chrome   RS-1366  Sin desbordamiento horizontal a 1366×768 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] firefox  CP-01    Autocompletado por nombre comercial («losa»)
+             Detalle: ['Losartán']
+  [APROBADO] firefox  CP-02    Búsqueda por principio activo sin tilde («acetaminofen»)
+             Detalle: ['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']
+  [APROBADO] firefox  CP-03    Mensaje cuando no hay coincidencias
+             Detalle: No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru
+  [APROBADO] firefox  CP-04    Validación de búsqueda con menos de 3 caracteres
+             Detalle: Escribe al menos 3 caracteres para buscar un medicamento.
+  [FALLA   ] firefox  CP-05    Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)
+             Detalle: Excepción: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded.
+  [FALLA   ] firefox  CP-06    Comparación por precio: misma presentación y moneda, lista = marcadores
+             Detalle: Excepción: TimeoutError: Page.goto: Timeout 30000ms exceeded.
+  [FALLA   ] firefox  CP-07    Atribución del mapa y aviso de confirmación con la farmacia
+             Detalle: Excepción: TimeoutError: Page.inner_text: Timeout 30000ms exceeded.
+  [APROBADO] firefox  CP-08    Presentación sin ofertas muestra estado vacío
+             Detalle: No hay ofertas registradas
+  [APROBADO] firefox  CP-09    Ubicación del visitante con permiso concedido (P04)
+             Detalle: Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C.
+  [APROBADO] firefox  CP-10    Orden por cercanía identifica la farmacia más cercana (Haversine)
+             Detalle: 1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)
+  [APROBADO] firefox  CP-11    Las coordenadas no se envían a servidores ni quedan en localStorage
+             Detalle: solicitudes con coordenadas: 0, localStorage: []
+  [APROBADO] firefox  CP-12    Detalle de la oferta con farmacia, dirección, horario, precio y fecha
+             Detalle: Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)
+  [APROBADO] firefox  CP-13    Permiso denegado: mensaje y selección manual del punto
+             Detalle: Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C.
+  [APROBADO] firefox  CP-14    Farmacia sin horario muestra «Horario no registrado»
+             Detalle: Horario no registrado
+  [APROBADO] firefox  CP-15    Texto con HTML en la búsqueda no se ejecuta (inyección)
+             Detalle: sin ejecución de código
+  [APROBADO] firefox  CP-16    Si falla el mapa se conserva el listado
+             Detalle: 19 ofertas con el mapa caído
+  [APROBADO] firefox  CP-17    Falla de la base de datos muestra error, no «sin resultados»
+             Detalle: No fue posible cargar las ofertas
+  [APROBADO] firefox  RS-360   Sin desbordamiento horizontal a 360×800 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] firefox  RS-1366  Sin desbordamiento horizontal a 1366×768 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] webkit   CP-01    Autocompletado por nombre comercial («losa»)
+             Detalle: ['Losartán']
+  [APROBADO] webkit   CP-02    Búsqueda por principio activo sin tilde («acetaminofen»)
+             Detalle: ['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']
+  [APROBADO] webkit   CP-03    Mensaje cuando no hay coincidencias
+             Detalle: No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru
+  [APROBADO] webkit   CP-04    Validación de búsqueda con menos de 3 caracteres
+             Detalle: Escribe al menos 3 caracteres para buscar un medicamento.
+  [APROBADO] webkit   CP-05    Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)
+             Detalle: 2 presentaciones en 2.5 s
+  [APROBADO] webkit   CP-06    Comparación por precio: misma presentación y moneda, lista = marcadores
+             Detalle: 19 ofertas, 19 marcadores, orden ascendente=True
+  [APROBADO] webkit   CP-07    Atribución del mapa y aviso de confirmación con la farmacia
+             Detalle: © OpenStreetMap contributors
+  [APROBADO] webkit   CP-08    Presentación sin ofertas muestra estado vacío
+             Detalle: No hay ofertas registradas
+  [APROBADO] webkit   CP-09    Ubicación del visitante con permiso concedido (P04)
+             Detalle: Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C.
+  [APROBADO] webkit   CP-10    Orden por cercanía identifica la farmacia más cercana (Haversine)
+             Detalle: 1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)
+  [APROBADO] webkit   CP-11    Las coordenadas no se envían a servidores ni quedan en localStorage
+             Detalle: solicitudes con coordenadas: 0, localStorage: []
+  [APROBADO] webkit   CP-12    Detalle de la oferta con farmacia, dirección, horario, precio y fecha
+             Detalle: Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)
+  [APROBADO] webkit   CP-13    Permiso denegado: mensaje y selección manual del punto
+             Detalle: Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C.
+  [APROBADO] webkit   CP-14    Farmacia sin horario muestra «Horario no registrado»
+             Detalle: Horario no registrado
+  [APROBADO] webkit   CP-15    Texto con HTML en la búsqueda no se ejecuta (inyección)
+             Detalle: sin ejecución de código
+  [APROBADO] webkit   CP-16    Si falla el mapa se conserva el listado
+             Detalle: 19 ofertas con el mapa caído
+  [APROBADO] webkit   CP-17    Falla de la base de datos muestra error, no «sin resultados»
+             Detalle: No fue posible cargar las ofertas
+  [APROBADO] webkit   RS-360   Sin desbordamiento horizontal a 360×800 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] webkit   RS-1366  Sin desbordamiento horizontal a 1366×768 en 7 pantallas
+             Detalle: 7/7 correctas
+
+====================================================================================================
+Ejecuci?n: 06_firefox_2026-09-24_1132.json   Fecha: 2026-09-24 11:32
+  Navegador firefox: versi?n 155.0
+  Resultado: 19 de 19 aprobados
+----------------------------------------------------------------------------------------------------
+  [APROBADO] firefox  CP-01    Autocompletado por nombre comercial («losa»)
+             Detalle: ['Losartán']
+  [APROBADO] firefox  CP-02    Búsqueda por principio activo sin tilde («acetaminofen»)
+             Detalle: ['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']
+  [APROBADO] firefox  CP-03    Mensaje cuando no hay coincidencias
+             Detalle: No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru
+  [APROBADO] firefox  CP-04    Validación de búsqueda con menos de 3 caracteres
+             Detalle: Escribe al menos 3 caracteres para buscar un medicamento.
+  [APROBADO] firefox  CP-05    Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)
+             Detalle: 2 presentaciones en 6.4 s
+  [APROBADO] firefox  CP-06    Comparación por precio: misma presentación y moneda, lista = marcadores
+             Detalle: 19 ofertas, 19 marcadores, orden ascendente=True
+  [APROBADO] firefox  CP-07    Atribución del mapa y aviso de confirmación con la farmacia
+             Detalle: © OpenStreetMap contributors
+  [APROBADO] firefox  CP-08    Presentación sin ofertas muestra estado vacío
+             Detalle: No hay ofertas registradas
+  [APROBADO] firefox  CP-09    Ubicación del visitante con permiso concedido (P04)
+             Detalle: Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C.
+  [APROBADO] firefox  CP-10    Orden por cercanía identifica la farmacia más cercana (Haversine)
+             Detalle: 1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)
+  [APROBADO] firefox  CP-11    Las coordenadas no se envían a servidores ni quedan en localStorage
+             Detalle: solicitudes con coordenadas: 0, localStorage: []
+  [APROBADO] firefox  CP-12    Detalle de la oferta con farmacia, dirección, horario, precio y fecha
+             Detalle: Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)
+  [APROBADO] firefox  CP-13    Permiso denegado: mensaje y selección manual del punto
+             Detalle: Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C.
+  [APROBADO] firefox  CP-14    Farmacia sin horario muestra «Horario no registrado»
+             Detalle: Horario no registrado
+  [APROBADO] firefox  CP-15    Texto con HTML en la búsqueda no se ejecuta (inyección)
+             Detalle: sin ejecución de código
+  [APROBADO] firefox  CP-16    Si falla el mapa se conserva el listado
+             Detalle: 19 ofertas con el mapa caído
+  [APROBADO] firefox  CP-17    Falla de la base de datos muestra error, no «sin resultados»
+             Detalle: No fue posible cargar las ofertas
+  [APROBADO] firefox  RS-360   Sin desbordamiento horizontal a 360×800 en 7 pantallas
+             Detalle: 7/7 correctas
+  [APROBADO] firefox  RS-1366  Sin desbordamiento horizontal a 1366×768 en 7 pantallas
+             Detalle: 7/7 correctas
+
+====================================================================================================
+Ejecuci?n: 07_rendimiento_webkit_2026-09-24_1145.json   Fecha: 2026-09-24 11:45
+  Navegador webkit: versi?n 26.6
+  Resultado: 2 de 2 aprobados
+----------------------------------------------------------------------------------------------------
+  [APROBADO] webkit   RN-01    Listado y marcadores en ≤ 3 s en 10 búsquedas consecutivas
+             Detalle: 10/10; tiempos ms: [1579, 996, 1257, 1379, 1244, 1646, 1445, 1661, 1464, 1595]
+  [APROBADO] webkit   RN-02    Sugerencias del buscador (P01)
+             Detalle: ms: [30, 34, 30, 32, 32]
+
+====================================================================================================
+Rendimiento en Google Chrome 153.0.8010.53 (24/09/2026, ~11:40, tomado de la salida de consola del script e2e.py en modo SOLO_PERF):
+  [APROBADO] RN-01 10/10 en <= 3 s; tiempos ms: [2531, 1405, 1458, 1098, 1138, 1239, 1117, 1133, 1308, 1244]
+  [APROBADO] RN-02 Sugerencias del buscador (P01) ms: [65, 69, 54, 59, 47]

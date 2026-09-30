@@ -1,0 +1,22 @@
+EVIDENCIAS DE PRUEBAS FARMAPS (A13 - A19) - 24/09/2026
+
+Sitio probado: https://farmaps-b3a0c.web.app (Firebase Hosting, HTTPS)
+Proyecto Firebase: farmaps-b3a0c (Cloud Firestore, Firebase Authentication, Firebase Hosting)
+
+capturas\
+  EV-01 a EV-26: capturas de pantalla automáticas (Playwright). Cada imagen lleva una franja
+  inferior con el código de evidencia, el caso, la URL exacta, el navegador y la fecha y hora.
+  indice_capturas.csv: relación de cada captura con su caso, URL y navegador.
+
+registros\
+  A13-A19_resultados_automatizados.txt: resultado de cada caso en cada ejecución.
+  A15_integridad_datos.txt: validación del catálogo descargado desde Cloud Firestore.
+  json\: resultados originales de cada ejecución (01 = antes de la corrección de INC-01).
+
+scripts\
+  Scripts usados para las pruebas. La contraseña del administrador se lee de la variable
+  de entorno FARMAPS_ADMIN_PASS y no está incluida en los archivos.
+  e2e.py: pruebas funcionales, de compatibilidad, de administración y de rendimiento.
+  permisos.py: pruebas de reglas de seguridad por la API REST de Firestore y Authentication.
+  datos.py: validación de integridad del catálogo.
+  evidencias.py: generación de las capturas.

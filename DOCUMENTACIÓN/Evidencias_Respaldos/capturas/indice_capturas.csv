@@ -1,0 +1,27 @@
+﻿Codigo;Caso;URL;Navegador;Archivo
+EV-01;CP-01 Autocompletado;https://farmaps-b3a0c.web.app/;Microsoft Edge 153.0.4234.48;EV-01.png
+EV-02;CP-03 Sin coincidencias;https://farmaps-b3a0c.web.app/;Microsoft Edge 153.0.4234.48;EV-02.png
+EV-03;CP-04 Minimo 3 caracteres;https://farmaps-b3a0c.web.app/;Microsoft Edge 153.0.4234.48;EV-03.png
+EV-04;CP-05 Presentaciones separadas;https://farmaps-b3a0c.web.app/P02/index.html?q=losartan;Microsoft Edge 153.0.4234.48;EV-04.png
+EV-05;CP-06/CP-07 Orden por precio, mapa y atribucion;https://farmaps-b3a0c.web.app/P03/index.html?presentacion=losartan-50-mg-caja-x-30-tabletas;Microsoft Edge 153.0.4234.48;EV-05.png
+EV-06;CP-08 Presentacion sin ofertas;https://farmaps-b3a0c.web.app/P03/index.html?presentacion=acetaminofen-150-mg-5-ml-frasco-x-90-ml;Microsoft Edge 153.0.4234.48;EV-06.png
+EV-07;CP-14 Horario no registrado;https://farmaps-b3a0c.web.app/P05/index.html?oferta=f05__acetaminofen-500-mg-caja-x-20-tabletas__COP;Microsoft Edge 153.0.4234.48;EV-07.png
+EV-08;CP-15 HTML no se ejecuta;https://farmaps-b3a0c.web.app/P02/index.html?q=%3Cimg%20src%3Dx%20onerror%3Dwindow.__xss%3D1%3E;Microsoft Edge 153.0.4234.48;EV-08.png
+EV-09;CP-09 Ubicacion con permiso (Zona T);https://farmaps-b3a0c.web.app/P04/index.html?volver=comparador&presentacion=losartan-50-mg-caja-x-30-tabletas;Microsoft Edge 153.0.4234.48;EV-09.png
+EV-10;CP-10 Orden por cercania (Haversine);https://farmaps-b3a0c.web.app/P03/index.html?presentacion=losartan-50-mg-caja-x-30-tabletas&orden=distancia;Microsoft Edge 153.0.4234.48;EV-10.png
+EV-11;CP-12 Detalle de la oferta;https://farmaps-b3a0c.web.app/P05/index.html?presentacion=losartan-50-mg-caja-x-30-tabletas&orden=distancia&oferta=f06__losartan-50-mg-caja-x-30-tabletas__COP;Microsoft Edge 153.0.4234.48;EV-11.png
+EV-12;CP-13 Permiso denegado y punto manual;https://farmaps-b3a0c.web.app/P04/index.html?volver=comparador&presentacion=losartan-50-mg-caja-x-30-tabletas;Microsoft Edge 153.0.4234.48;EV-12.png
+EV-13;CP-16 Falla del mapa (servicio bloqueado);https://farmaps-b3a0c.web.app/P03/index.html?presentacion=losartan-50-mg-caja-x-30-tabletas;Microsoft Edge 153.0.4234.48;EV-13.png
+EV-14;CP-17 Falla de la base de datos (conexion bloqueada);https://farmaps-b3a0c.web.app/P03/index.html?presentacion=losartan-50-mg-caja-x-30-tabletas;Microsoft Edge 153.0.4234.48;EV-14.png
+EV-15;AD-01 Acceso sin sesion redirige a A01;https://farmaps-b3a0c.web.app/A01/index.html?volver=A03;Microsoft Edge 153.0.4234.48;EV-15.png
+EV-16;AD-02 Credenciales incorrectas;https://farmaps-b3a0c.web.app/A01/index.html?volver=A03;Microsoft Edge 153.0.4234.48;EV-16.png
+EV-17;AD-03 Inicio de sesion valido;https://farmaps-b3a0c.web.app/A03/index.html;Microsoft Edge 153.0.4234.48;EV-17.png
+EV-18;AD-04 Validacion de formulario vacio;https://farmaps-b3a0c.web.app/A03/index.html;Microsoft Edge 153.0.4234.48;EV-18.png
+EV-19;AD-06 Panel administrativo A02;https://farmaps-b3a0c.web.app/A02/index.html;Microsoft Edge 153.0.4234.48;EV-19.png
+EV-20;AD-07 Precio 0 rechazado;https://farmaps-b3a0c.web.app/A06/index.html;Microsoft Edge 153.0.4234.48;EV-20.png
+EV-21;AD-08 Cierre de sesion;https://farmaps-b3a0c.web.app/A01/index.html?salida=1;Microsoft Edge 153.0.4234.48;EV-21.png
+EV-22;A17 Visualizacion a 360x800;https://farmaps-b3a0c.web.app/P03/index.html?presentacion=losartan-50-mg-caja-x-30-tabletas;Microsoft Edge 153.0.4234.48;EV-22.png
+EV-23;A17 Visualizacion a 1366x768;https://farmaps-b3a0c.web.app/P03/index.html?presentacion=losartan-50-mg-caja-x-30-tabletas;Microsoft Edge 153.0.4234.48;EV-23.png
+EV-24;A17 P01 a 360x800 en Google Chrome;https://farmaps-b3a0c.web.app/;Google Chrome 153.0.8010.53;EV-24.png
+EV-25;A17 P01 a 360x800 en Firefox;https://farmaps-b3a0c.web.app/;Firefox 155.0;EV-25.png
+EV-26;A17 P01 a 360x800 en WebKit (Safari);https://farmaps-b3a0c.web.app/;WebKit (Safari) 26.6;EV-26.png

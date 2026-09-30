@@ -1,0 +1,415 @@
+{
+ "resultados": [
+  {
+   "motor": "chrome",
+   "codigo": "CP-01",
+   "caso": "Autocompletado por nombre comercial («losa»)",
+   "ok": true,
+   "detalle": "['Losartán']"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-02",
+   "caso": "Búsqueda por principio activo sin tilde («acetaminofen»)",
+   "ok": true,
+   "detalle": "['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-03",
+   "caso": "Mensaje cuando no hay coincidencias",
+   "ok": true,
+   "detalle": "No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-04",
+   "caso": "Validación de búsqueda con menos de 3 caracteres",
+   "ok": true,
+   "detalle": "Escribe al menos 3 caracteres para buscar un medicamento."
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-05",
+   "caso": "Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)",
+   "ok": true,
+   "detalle": "2 presentaciones en 2.1 s"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-06",
+   "caso": "Comparación por precio: misma presentación y moneda, lista = marcadores",
+   "ok": true,
+   "detalle": "19 ofertas, 19 marcadores, orden ascendente=True"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-07",
+   "caso": "Atribución del mapa y aviso de confirmación con la farmacia",
+   "ok": true,
+   "detalle": "© OpenStreetMap contributors"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-08",
+   "caso": "Presentación sin ofertas muestra estado vacío",
+   "ok": true,
+   "detalle": "No hay ofertas registradas"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-09",
+   "caso": "Ubicación del visitante con permiso concedido (P04)",
+   "ok": true,
+   "detalle": "Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C."
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-10",
+   "caso": "Orden por cercanía identifica la farmacia más cercana (Haversine)",
+   "ok": true,
+   "detalle": "1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-11",
+   "caso": "Las coordenadas no se envían a servidores ni quedan en localStorage",
+   "ok": true,
+   "detalle": "solicitudes con coordenadas: 0, localStorage: []"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-12",
+   "caso": "Detalle de la oferta con farmacia, dirección, horario, precio y fecha",
+   "ok": true,
+   "detalle": "Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-13",
+   "caso": "Permiso denegado: mensaje y selección manual del punto",
+   "ok": true,
+   "detalle": "Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C."
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-14",
+   "caso": "Farmacia sin horario muestra «Horario no registrado»",
+   "ok": true,
+   "detalle": "Horario no registrado"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-15",
+   "caso": "Texto con HTML en la búsqueda no se ejecuta (inyección)",
+   "ok": true,
+   "detalle": "sin ejecución de código"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-16",
+   "caso": "Si falla el mapa se conserva el listado",
+   "ok": true,
+   "detalle": "19 ofertas con el mapa caído"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "CP-17",
+   "caso": "Falla de la base de datos muestra error, no «sin resultados»",
+   "ok": true,
+   "detalle": "No fue posible cargar las ofertas"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "RS-360",
+   "caso": "Sin desbordamiento horizontal a 360×800 en 7 pantallas",
+   "ok": true,
+   "detalle": "7/7 correctas"
+  },
+  {
+   "motor": "chrome",
+   "codigo": "RS-1366",
+   "caso": "Sin desbordamiento horizontal a 1366×768 en 7 pantallas",
+   "ok": true,
+   "detalle": "7/7 correctas"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-01",
+   "caso": "Autocompletado por nombre comercial («losa»)",
+   "ok": true,
+   "detalle": "['Losartán']"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-02",
+   "caso": "Búsqueda por principio activo sin tilde («acetaminofen»)",
+   "ok": true,
+   "detalle": "['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-03",
+   "caso": "Mensaje cuando no hay coincidencias",
+   "ok": true,
+   "detalle": "No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-04",
+   "caso": "Validación de búsqueda con menos de 3 caracteres",
+   "ok": true,
+   "detalle": "Escribe al menos 3 caracteres para buscar un medicamento."
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-05",
+   "caso": "Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)",
+   "ok": false,
+   "detalle": "Excepción: TimeoutError: Page.wait_for_selector: Timeout 15000ms exceeded."
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-06",
+   "caso": "Comparación por precio: misma presentación y moneda, lista = marcadores",
+   "ok": false,
+   "detalle": "Excepción: TimeoutError: Page.goto: Timeout 30000ms exceeded."
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-07",
+   "caso": "Atribución del mapa y aviso de confirmación con la farmacia",
+   "ok": false,
+   "detalle": "Excepción: TimeoutError: Page.inner_text: Timeout 30000ms exceeded."
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-08",
+   "caso": "Presentación sin ofertas muestra estado vacío",
+   "ok": true,
+   "detalle": "No hay ofertas registradas"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-09",
+   "caso": "Ubicación del visitante con permiso concedido (P04)",
+   "ok": true,
+   "detalle": "Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C."
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-10",
+   "caso": "Orden por cercanía identifica la farmacia más cercana (Haversine)",
+   "ok": true,
+   "detalle": "1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-11",
+   "caso": "Las coordenadas no se envían a servidores ni quedan en localStorage",
+   "ok": true,
+   "detalle": "solicitudes con coordenadas: 0, localStorage: []"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-12",
+   "caso": "Detalle de la oferta con farmacia, dirección, horario, precio y fecha",
+   "ok": true,
+   "detalle": "Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-13",
+   "caso": "Permiso denegado: mensaje y selección manual del punto",
+   "ok": true,
+   "detalle": "Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C."
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-14",
+   "caso": "Farmacia sin horario muestra «Horario no registrado»",
+   "ok": true,
+   "detalle": "Horario no registrado"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-15",
+   "caso": "Texto con HTML en la búsqueda no se ejecuta (inyección)",
+   "ok": true,
+   "detalle": "sin ejecución de código"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-16",
+   "caso": "Si falla el mapa se conserva el listado",
+   "ok": true,
+   "detalle": "19 ofertas con el mapa caído"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "CP-17",
+   "caso": "Falla de la base de datos muestra error, no «sin resultados»",
+   "ok": true,
+   "detalle": "No fue posible cargar las ofertas"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "RS-360",
+   "caso": "Sin desbordamiento horizontal a 360×800 en 7 pantallas",
+   "ok": true,
+   "detalle": "7/7 correctas"
+  },
+  {
+   "motor": "firefox",
+   "codigo": "RS-1366",
+   "caso": "Sin desbordamiento horizontal a 1366×768 en 7 pantallas",
+   "ok": true,
+   "detalle": "7/7 correctas"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-01",
+   "caso": "Autocompletado por nombre comercial («losa»)",
+   "ok": true,
+   "detalle": "['Losartán']"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-02",
+   "caso": "Búsqueda por principio activo sin tilde («acetaminofen»)",
+   "ok": true,
+   "detalle": "['Acetaminofén', 'Dolex', 'Dolex Forte', 'Dolex Niños']"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-03",
+   "caso": "Mensaje cuando no hay coincidencias",
+   "ok": true,
+   "detalle": "No encontramos medicamentos que coincidan con “zzqx”. Revisa la ortografía o pru"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-04",
+   "caso": "Validación de búsqueda con menos de 3 caracteres",
+   "ok": true,
+   "detalle": "Escribe al menos 3 caracteres para buscar un medicamento."
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-05",
+   "caso": "Resultados distinguen presentaciones (Losartán 50 mg y 100 mg)",
+   "ok": true,
+   "detalle": "2 presentaciones en 2.5 s"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-06",
+   "caso": "Comparación por precio: misma presentación y moneda, lista = marcadores",
+   "ok": true,
+   "detalle": "19 ofertas, 19 marcadores, orden ascendente=True"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-07",
+   "caso": "Atribución del mapa y aviso de confirmación con la farmacia",
+   "ok": true,
+   "detalle": "© OpenStreetMap contributors"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-08",
+   "caso": "Presentación sin ofertas muestra estado vacío",
+   "ok": true,
+   "detalle": "No hay ofertas registradas"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-09",
+   "caso": "Ubicación del visitante con permiso concedido (P04)",
+   "ok": true,
+   "detalle": "Mi ubicación actual · cerca de Zona T · Chapinero, Bogotá D.C."
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-10",
+   "caso": "Orden por cercanía identifica la farmacia más cercana (Haversine)",
+   "ok": true,
+   "detalle": "1.ª Farmacia Parque 93 a Aprox. 1,2 km (Haversine esperado 1.193 km)"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-11",
+   "caso": "Las coordenadas no se envían a servidores ni quedan en localStorage",
+   "ok": true,
+   "detalle": "solicitudes con coordenadas: 0, localStorage: []"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-12",
+   "caso": "Detalle de la oferta con farmacia, dirección, horario, precio y fecha",
+   "ok": true,
+   "detalle": "Farmacia Parque 93 · $ 8.800 COP · Disponible (reportado por la farmacia)"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-13",
+   "caso": "Permiso denegado: mensaje y selección manual del punto",
+   "ok": true,
+   "detalle": "Permiso de ubicación denegado. Puedes seleccionar el punto manualmente → Cerca de Zona Industrial – Calle 13 · Puente Aranda, Bogotá D.C."
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-14",
+   "caso": "Farmacia sin horario muestra «Horario no registrado»",
+   "ok": true,
+   "detalle": "Horario no registrado"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-15",
+   "caso": "Texto con HTML en la búsqueda no se ejecuta (inyección)",
+   "ok": true,
+   "detalle": "sin ejecución de código"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-16",
+   "caso": "Si falla el mapa se conserva el listado",
+   "ok": true,
+   "detalle": "19 ofertas con el mapa caído"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "CP-17",
+   "caso": "Falla de la base de datos muestra error, no «sin resultados»",
+   "ok": true,
+   "detalle": "No fue posible cargar las ofertas"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "RS-360",
+   "caso": "Sin desbordamiento horizontal a 360×800 en 7 pantallas",
+   "ok": true,
+   "detalle": "7/7 correctas"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "RS-1366",
+   "caso": "Sin desbordamiento horizontal a 1366×768 en 7 pantallas",
+   "ok": true,
+   "detalle": "7/7 correctas"
+  }
+ ],
+ "extra": {
+  "chrome": {
+   "version": "153.0.8010.53"
+  },
+  "firefox": {
+   "version": "155.0"
+  },
+  "webkit": {
+   "version": "26.6"
+  }
+ },
+ "fecha": "2026-09-24 11:23"
+}

@@ -1,0 +1,87 @@
+{
+ "resultados": [
+  {
+   "motor": "webkit",
+   "codigo": "RN-01",
+   "caso": "Listado y marcadores en ≤ 3 s en 10 búsquedas consecutivas",
+   "ok": true,
+   "detalle": "10/10; tiempos ms: [1579, 996, 1257, 1379, 1244, 1646, 1445, 1661, 1464, 1595]"
+  },
+  {
+   "motor": "webkit",
+   "codigo": "RN-02",
+   "caso": "Sugerencias del buscador (P01)",
+   "ok": true,
+   "detalle": "ms: [30, 34, 30, 32, 32]"
+  }
+ ],
+ "extra": {
+  "webkit": {
+   "version": "26.6"
+  },
+  "rendimiento": {
+   "webkit": {
+    "busquedas": [
+     [
+      "acetaminofen-500-mg-caja-x-100-tabletas",
+      1579,
+      17
+     ],
+     [
+      "advil-max-400-mg-caja-x-20-capsulas",
+      996,
+      14
+     ],
+     [
+      "amoxicilina-250-mg-5-ml-frasco-x-100-ml",
+      1257,
+      11
+     ],
+     [
+      "atorvastatina-40-mg-caja-x-30-tabletas",
+      1379,
+      17
+     ],
+     [
+      "clotrimazol-1-pct-tubo-x-20-g",
+      1244,
+      8
+     ],
+     [
+      "dolex-forte-500-mg-65-mg-caja-x-16-tabletas",
+      1646,
+      13
+     ],
+     [
+      "esomeprazol-20-mg-caja-x-14-tabletas",
+      1445,
+      12
+     ],
+     [
+      "ibuprofeno-100-mg-5-ml-frasco-x-120-ml",
+      1661,
+      20
+     ],
+     [
+      "levotiroxina-50-mcg-caja-x-30-tabletas",
+      1464,
+      11
+     ],
+     [
+      "losartan-100-mg-caja-x-30-tabletas",
+      1595,
+      16
+     ]
+    ],
+    "filtro": [
+     30,
+     34,
+     30,
+     32,
+     32
+    ]
+   }
+  }
+ },
+ "fecha": "2026-09-24 11:45"
+}

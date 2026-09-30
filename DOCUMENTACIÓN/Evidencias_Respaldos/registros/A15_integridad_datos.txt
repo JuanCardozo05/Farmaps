@@ -1,0 +1,8 @@
+﻿Descarga del catálogo: 24/09/2026 10:29 (API REST de Cloud Firestore, proyecto farmaps-b3a0c) - Validación: script datos.py
+
+{'farmacias': 28, 'medicamentos': 34, 'presentaciones': 50, 'ofertas': 742}
+disponibles 626 no disp 116
+presentaciones con ofertas disp: 49 max [('ibuprofeno-100-mg-5-ml-frasco-x-120-ml', 20), ('losartan-50-mg-caja-x-30-tabletas', 19), ('ibuprofeno-800-mg-caja-x-30-tabletas', 18)] sin ofertas: 1
+precio min/max 2550 30350
+QA doc: [] []
+FALLO farmacia sin horario (opcional) 5 ['f05', 'f11', 'f19', 'f23', 'f28']

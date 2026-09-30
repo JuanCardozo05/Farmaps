@@ -1,0 +1,30 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "hosting": {
+    "public": "./",
+    "ignore": [
+      "firebase.json",
+      "firestore.rules",
+      "firestore.indexes.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "redirects": [
+      { "source": "/seleccion", "destination": "/P02/", "type": 301 },
+      { "source": "/seleccion/", "destination": "/P02/", "type": 301 },
+      { "source": "/comparador", "destination": "/P03/", "type": 301 },
+      { "source": "/comparador/", "destination": "/P03/", "type": 301 },
+      { "source": "/referencia", "destination": "/P04/", "type": 301 },
+      { "source": "/referencia/", "destination": "/P04/", "type": 301 },
+      { "source": "/detalle", "destination": "/P05/", "type": 301 },
+      { "source": "/detalle/", "destination": "/P05/", "type": 301 },
+      { "source": "/seleccion/:resto*", "destination": "/P02/:resto*", "type": 301 },
+      { "source": "/comparador/:resto*", "destination": "/P03/:resto*", "type": 301 },
+      { "source": "/referencia/:resto*", "destination": "/P04/:resto*", "type": 301 },
+      { "source": "/detalle/:resto*", "destination": "/P05/:resto*", "type": 301 }
+    ]
+  }
+}
